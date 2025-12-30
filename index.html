@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nick Cheng - NetSuite ERP Consultant</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --text-color: #333;
+        --light-bg: #ecf0f1;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--white);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      header .subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+
+      .contact-info {
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .contact-info a {
+        color: var(--white);
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: opacity 0.3s;
+      }
+
+      .contact-info a:hover {
+        opacity: 0.8;
+      }
+
+      nav {
+        background-color: var(--primary-color);
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      nav ul li {
+        margin: 0 1.5rem;
+      }
+
+      nav ul li a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary-color);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--secondary-color);
+      }
+
+      h3 {
+        color: var(--secondary-color);
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .about-content {
+        background-color: var(--light-bg);
+        padding: 2rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--secondary-color);
+      }
+
+      .about-content p {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+      }
+
+      .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .cert-card {
+        background-color: var(--white);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-top: 4px solid var(--accent-color);
+      }
+
+      .cert-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .cert-date {
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .skills-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category {
+        background-color: var(--white);
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-category h3 {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light-bg);
+      }
+
+      .skill-category ul {
+        list-style: none;
+      }
+
+      .skill-category ul li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .skill-category ul li:before {
+        content: "▸";
+        color: var(--secondary-color);
+        position: absolute;
+        left: 0;
+      }
+
+      .experience-timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .experience-item {
+        margin-bottom: 3rem;
+        position: relative;
+        padding-left: 2rem;
+        border-left: 3px solid var(--secondary-color);
+      }
+
+      .experience-item:before {
+        content: "";
+        position: absolute;
+        left: -0.6rem;
+        top: 0;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--secondary-color);
+      }
+
+      .experience-header {
+        margin-bottom: 1rem;
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .role-date {
+        color: var(--secondary-color);
+        font-size: 0.95rem;
+        margin-top: 0.3rem;
+      }
+
+      .experience-item ul {
+        list-style: none;
+        margin-top: 1rem;
+      }
+
+      .experience-item ul li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .experience-item ul li:before {
+        content: "✓";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .highlight-box {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+        margin-top: 4rem;
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2rem;
+        }
+
+        header .subtitle {
+          font-size: 1.1rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 0.5rem 0;
+        }
+
+        .container {
+          padding: 2rem 1rem;
+        }
+
+        .contact-info a {
+          display: block;
+          margin: 0.5rem 0;
+        }
+
+        .experience-timeline {
+          padding-left: 0;
+        }
+
+        .experience-item {
+          padding-left: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Nick Cheng</h1>
+      <p class="subtitle">
+        NetSuite Certified ERP Consultant &amp; Administrator
+      </p>
+      <div class="contact-info">
+        <a href="mailto:nc6818@gmail.com">nc6818@gmail.com</a>
+        <a href="tel:+447894166049">+44 (0)7894 166 049</a>
+        <span>Basingstoke, UK</span>
+      </div>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <p>
+            NetSuite certified ERP Consultant &amp; Administrator with over a
+            decade of experience in group financial consolidation and management
+            reporting. I bring strong communication skills developed through
+            working with and explaining complex financial concepts to
+            non-financial colleagues.
+          </p>
+
+          <p>
+            My expertise spans <strong>Intercompany Accounting</strong>,
+            <strong>Advanced Revenue Management</strong>,
+            <strong>Fixed Assets Management</strong>, and
+            <strong>Multi-book Accounting</strong> on top of standard NetSuite
+            modules.
+          </p>
+
+          <p>
+            I help organisations improve financial and non-financial data flows,
+            NetSuite automations &amp; integrations, and produce insightful
+            management information that drives business decisions.
+          </p>
+        </div>
+      </section>
+
+      <section id="certifications">
+        <h2>Qualifications &amp; Certifications</h2>
+
+        <h3>NetSuite Certifications</h3>
+        <div class="certifications-grid">
+          <div class="cert-card">
+            <h4>Multi-Book Accounting</h4>
+            <p class="cert-date">September 2022</p>
+            <p>NetSuite Authorised No. 22884</p>
+          </div>
+          <div class="cert-card">
+            <h4>Advanced Revenue Management</h4>
+            <p class="cert-date">June 2022</p>
+            <p>NetSuite Authorised No. 21624</p>
+          </div>
+          <div class="cert-card">
+            <h4>NetSuite Certified ERP Consultant</h4>
+            <p class="cert-date">October 2020</p>
+          </div>
+          <div class="cert-card">
+            <h4>NetSuite Certified Administrator</h4>
+            <p class="cert-date">February 2020</p>
+          </div>
+          <div class="cert-card">
+            <h4>NetSuite Certified Suite Foundation</h4>
+            <p class="cert-date">December 2019</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem">Accountancy</h3>
+        <div class="cert-card" style="max-width: 400px">
+          <h4>Advanced Diploma in Management Accounting + AAT</h4>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Technical &amp; Business Skills</h2>
+        <div class="skills-section">
+          <div class="skill-category">
+            <h3>NetSuite Expertise</h3>
+            <ul>
+              <li>End-to-End ERP Implementations using SuiteSuccess</li>
+              <li>
+                OneWorld - Group Consolidation &amp; Intercompany Accounting
+              </li>
+              <li>Fixed Assets Management (Primary &amp; Secondary books)</li>
+              <li>Advanced Revenue Management</li>
+              <li>Multi-book Accounting</li>
+              <li>Project Management Module</li>
+              <li>Data Migration, UAT &amp; End User Training</li>
+              <li>Reports Writing &amp; Saved Searches (SQL/HTML)</li>
+              <li>Workflows &amp; Advanced PDF/HTML Templates</li>
+              <li>Electronic Bank Payments/EFT File Formats</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Development &amp; Integration</h3>
+            <ul>
+              <li>SuiteScript 2.x (JavaScript)</li>
+              <li>SuiteTalk Web Services</li>
+              <li>REST API (JavaScript/Postman)</li>
+              <li>SOAP (C#)</li>
+              <li>Integration Management</li>
+              <li>Custom Workflow Development</li>
+              <li>Advanced PDF Templates</li>
+              <li>Payment File Format Customization (XML/CSV)</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Financial Processes</h3>
+            <ul>
+              <li>Group Consolidation</li>
+              <li>Inter-company Transactions &amp; Eliminations</li>
+              <li>Order-to-Cash (O2C) Processes</li>
+              <li>Procure-to-Pay (P2P) Processes</li>
+              <li>Record-to-Report (R2R) Processes</li>
+              <li>Business &amp; Gap Analysis</li>
+              <li>Process Redefinition (AS-IS vs TO-BE)</li>
+              <li>FX Management</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Project Management</h3>
+            <ul>
+              <li>Stakeholder Communication</li>
+              <li>Scope &amp; Timeline Management</li>
+              <li>Expectation Management</li>
+              <li>Project Lifecycle Oversight</li>
+              <li>Vendor Management</li>
+              <li>Change Management</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Additional Systems</h3>
+            <ul>
+              <li>IBM Planning Analytics / Cognos TM1</li>
+              <li>Concur Administrator</li>
+              <li>Expensify Administrator</li>
+              <li>Spendesk Administrator</li>
+              <li>Tipalti</li>
+              <li>Navan</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">Curve</div>
+              <div class="role-date">
+                Freelance NetSuite Engineer | March 2025 – October 2025
+              </div>
+            </div>
+            <ul>
+              <li>
+                Fixed intercompany eliminations and FX issues by pairing 3 years
+                of intercompany transactions for share capital, investments,
+                receivables/payables, and sales/purchase mismatches
+              </li>
+              <li>
+                Deployed validation script to prevent single-sided InterCo
+                journal entries
+              </li>
+              <li>
+                Fixed Fixed Asset Management depreciation history issues and
+                imported un-capitalized assets with depreciation history
+              </li>
+              <li>Implemented journal approval workflow</li>
+              <li>
+                Deployed scheduled script to populate prepayment/amortization
+                line memos
+              </li>
+              <li>
+                Built Curve-specific financial statements and reports including
+                yearly depreciation schedules and prepayment/amortization
+                schedules
+              </li>
+              <li>
+                Re-implemented electronic payments and created EFT Payment File
+                Templates
+              </li>
+              <li>Configured non-deductible VAT</li>
+              <li>
+                Delivered comprehensive handover and knowledge transfer sessions
+                to finance team
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">Dott</div>
+              <div class="role-date">
+                Freelance NetSuite Consultant | October 2024 – January 2025
+              </div>
+            </div>
+            <div class="highlight-box">
+              <strong
+                >Saved approximately €150k against initial budget for NetSuite
+                merge project</strong
+              >
+            </div>
+            <ul>
+              <li>
+                Integrated newly acquired entities (Tier Mobility's) into Dott's
+                NetSuite following merger
+              </li>
+              <li>
+                Led combined NetSuite configurations and data migration of Fixed
+                Assets (primary and secondary books), Trial Balances, GL
+                accounts, and Vendors
+              </li>
+              <li>
+                Configured Spain (accrual basis) and Italy (cash basis)
+                withholding tax
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">Tier Mobility</div>
+              <div class="role-date">
+                Senior Finance Systems Manager (NetSuite) | August 2023 –
+                September 2024
+              </div>
+            </div>
+            <ul>
+              <li>
+                Owned finance systems, data, reporting, and processes impacting
+                the office of finance
+              </li>
+              <li>
+                Identified and resolved historical revenue recognition and fixed
+                asset issues
+              </li>
+              <li>
+                Reviewed and optimized NetSuite account setup, financial
+                operation process flows, and integrations
+              </li>
+              <li>
+                Ensured seamless integration with internal revenue platforms,
+                Expensify, Tipalti, approve.com, and Navan
+              </li>
+              <li>
+                Improved financial processes and automated operational tasks via
+                workflows
+              </li>
+              <li>
+                Managed NetSuite account manager and 3rd party consultants
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">AzroNet UK Ltd</div>
+              <div class="role-date">
+                Senior Implementation Consultant (NetSuite) | May 2022 – July
+                2023
+              </div>
+            </div>
+            <div class="highlight-box">
+              <strong
+                >Delivered end-to-end implementation using SuiteSuccess
+                methodology in just 3 months</strong
+              >
+            </div>
+            <ul>
+              <li>
+                Performed NetSuite implementations for various clients based on
+                specific business needs
+              </li>
+              <li>
+                Successfully delivered first implementation on time and under
+                budget
+              </li>
+              <li>Implemented FAM, ARM, and Advanced Project modules</li>
+              <li>
+                Created Advanced PDF Templates and EFT Payment File Templates
+                per client specifications
+              </li>
+              <li>Created Saved Searches, Reports, KPIs, and Dashboards</li>
+              <li>
+                Built approval workflows and automation/validation workflows
+              </li>
+              <li>Delivered end user training</li>
+              <li>
+                Served as subject matter expert on Fixed Assets, Advanced
+                Revenue Management, Intercompany Accounting, Group
+                Consolidations, FX Management, and Multi-book Accounting
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">
+                Avalere Health (Fishawack Communications Ltd)
+              </div>
+              <div class="role-date">
+                NetSuite Administrator | June 2021 – May 2022
+              </div>
+            </div>
+            <ul>
+              <li>Led the Purchase-to-Pay implementation</li>
+              <li>
+                Fixed Sales Order-Project percent complete revenue recognition
+                issues
+              </li>
+              <li>
+                Optimized Project Accounting and Management module, moved
+                revenue recognition to sales orders
+              </li>
+              <li>
+                Documented Order-to-Cash and Advanced Revenue Arrangement
+                processes
+              </li>
+              <li>
+                Provided level 3 support for approximately 1,000 NetSuite users
+              </li>
+              <li>Built advanced workflows to automate processes</li>
+              <li>Created multi-level sales invoice approval workflow</li>
+              <li>
+                Created All-in-One advanced PDF invoice template for different
+                subsidiary needs
+              </li>
+              <li>
+                Coordinated with 3rd party service providers on development
+                projects
+              </li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">Merlin Attractions Operations Ltd</div>
+              <div class="role-date">
+                Group Financial Systems Analyst (NetSuite) | December 2020 – May
+                2021
+              </div>
+            </div>
+            <ul>
+              <li>
+                Provided level 1 &amp; 2 support to approximately 1,000 global
+                end users
+              </li>
+              <li>
+                Developed saved searches and reports to meet user requirements
+              </li>
+              <li>
+                Oversaw ERP and related finance systems (primarily Concur)
+              </li>
+              <li>Supported business operations through system optimization</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">CloudPay UK Ltd</div>
+              <div class="role-date">
+                Group Systems Accountant (NetSuite and Concur) | September 2018
+                – November 2020
+              </div>
+            </div>
+            <ul>
+              <li>Improved existing core financial processes</li>
+              <li>Resolved Consolidated FX issues</li>
+              <li>
+                Fixed and automated Inter Company Accounting issues and
+                Eliminations
+              </li>
+              <li>Fixed Fixed Asset Management depreciation history issues</li>
+              <li>
+                Improved payment process by fixing Advanced Electronic Bank
+                Payments (saved 2-3 days on fortnightly payment runs)
+              </li>
+              <li>Implemented the Dunning Letters SuiteApp</li>
+              <li>
+                Performed NetSuite administrative functions and customizations
+              </li>
+              <li>
+                Provided financial reporting support and managed employee access
+              </li>
+              <li>Managed data import, cleansing, and maintenance efforts</li>
+              <li>Trained new NetSuite users</li>
+              <li>Administered the Concur employee expense system</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div class="company-name">R Twining &amp; Company Ltd</div>
+              <div class="role-date">
+                Group Systems Accountant (IBM Cognos TM1) | November 2004 –
+                October 2017
+              </div>
+            </div>
+            <ul>
+              <li>Managed group consolidation and reporting systems</li>
+              <li>
+                Administered IBM Cognos TM1 planning and analytics platform
+              </li>
+              <li>Supported financial planning and analysis processes</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Nick Cheng - NetSuite ERP Consultant &amp; Administrator
+      </p>
+      <p style="margin-top: 0.5rem">
+        Available for freelance and consulting opportunities
+      </p>
+    </footer>
+  </body>
+</html>
